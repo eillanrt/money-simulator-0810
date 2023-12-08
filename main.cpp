@@ -114,7 +114,7 @@ class MoneySimulator {
       colorChosenIsValid = stringExistsInArray(chosenColor, colors, howManyColors);
     } while (!colorChosenIsValid);
 
-    string randomColor = colors[random(0, 2)];
+    string randomColor = colors[random(0, howManyColors)];
 
     cout << "\n\nYOUR COLOR: " << chosenColor << "\nRANDOM COLOR: " << randomColor << "\n";
 
