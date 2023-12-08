@@ -30,6 +30,7 @@ class MoneySimulator {
   void homeScreen() {
    clearTerminal();
    cout << "----------------------------- HOME ------------------------------------\n";
+   cout << "YOUR MONEY: " << getMoney() << "\n\n";
     string activities[] = {
       "Gamble",
       "Go to bank"
@@ -46,7 +47,7 @@ class MoneySimulator {
         cout << i << " -> " << activities[i] << endl;
       }
 
-      cout << "What would you like to do?\n\nPICK A NUMBER\n\n=> ";
+      cout << "\nWhat would you like to do?\n\n=> ";
 
       cin >> activityChoice;
       proceedToActivity = activityChoice > numberOfActivities || activityChoice < 0;
@@ -68,8 +69,8 @@ class MoneySimulator {
     cout << "Money you want to bet: ";
     cin >> moneyToGamble;
 
-    if (moneyToGamble > moneyAmount) {
-      cout << "\nYou don't have enough money to bet that much\n\nContinue? 1=yes 0=no" << endl;
+    if (moneyToGamble > moneyAmount || moneyToGamble <= 0 ) {
+      cout << "\nYou don't have that much money or money is not valid.\n\nContinue? 1=yes 0=no" << endl;
       bool conti;
       cin >> conti;
 
@@ -97,36 +98,38 @@ class MoneySimulator {
 
     do {
       if (!colorChosenIsValid) {
-         
          cout << "INVALID COLOR PICK AGAIN!\n\n";
       }
 
-      cout << "Choose a color: ";
+      cout << "\nCOLORS:  ";
 
       for (const string color: colors) {
         cout << color << " ";
       }
-      cout << "\n";
+
+      cout << "\n\n";
+      cout << "Choose a color => ";
+
       cin >> chosenColor;
       colorChosenIsValid = stringExistsInArray(chosenColor, colors, howManyColors);
     } while (!colorChosenIsValid);
 
     string randomColor = colors[random(0, 2)];
 
-    cout << "YOUR COLOR: " << chosenColor << "\nRANDOM COLOR: " << randomColor << "\n";
+    cout << "\n\nYOUR COLOR: " << chosenColor << "\nRANDOM COLOR: " << randomColor << "\n";
 
     if (randomColor == chosenColor) {
-      moneyToGamble  *= 2;
-      cout << "\nCONGRATULATIONS YOUR MONEY JUST GOT DOUBLED!!\n";
+      addMoney(moneyToGamble);
+      cout << "\nCONGRATULATIONS YOUR WON ₱" << moneyToGamble << "\n";
     } else {
-      moneyAmount -= moneyToGamble;
-     cout << "\nBETTER LUCK NEXT TIME!!\n\nYOU LOSE " << moneyToGamble << "\n";
+      reduceMoney(moneyToGamble);
+     cout << "\nBETTER LUCK NEXT TIME!!\n\nYOU LOSE ₱" << moneyToGamble << "\n";
     }
 
-    cout << "You have now ₱" << moneyAmount << "\n\n";
+    cout << "You have now ₱" << getMoney() << "\n\n";
 
     bool goHome;
-    cout << "Go back to home screen? \n 1=yes 0=Gamble again\n=>";
+    cout << "Go back to home screen?\n1=yes 0=Gamble again\n=>";
     cin >> goHome;
 
     if (goHome) {
@@ -152,6 +155,7 @@ class MoneySimulator {
   double getMoney() {
     return moneyAmount;
   }
+  
    void clearTerminal() {
       system("clear");
     }
