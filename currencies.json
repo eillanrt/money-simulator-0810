@@ -1,40 +1,39 @@
 {
-    "currencies": [
-      {
-        "code": "PHP",
-        "name": "Philippine Peso",
-        "rate": 1.0
-      },
-      {
-        "code": "USD",
-        "name": "US Dollar",
-        "rate": 0.0199
-      },
-      {
-        "code": "EUR",
-        "name": "Euro",
-        "rate": 0.0235
-      },
-      {
-        "code": "GBP",
-        "name": "British Pound",
-        "rate": 0.0285
-      },
-      {
-        "code": "JPY",
-        "name": "Japanese Yen",
-        "rate": 2.2494
-      },
-      {
-        "code": "AUD",
-        "name": "Australian Dollar",
-        "rate": 0.7345
-      },
-      {
-        "code": "CAD",
-        "name": "Canadian Dollar",
-        "rate": 0.7894
-      }
-    ]
-  }
-  
+  "currencies": [
+    {
+      "code": "PHP",
+      "name": "Philippine Peso",
+      "rate": 1.0
+    },
+    {
+      "code": "USD",
+      "name": "US Dollar",
+      "rate": 0.0199
+    },
+    {
+      "code": "EUR",
+      "name": "Euro",
+      "rate": 0.0235
+    },
+    {
+      "code": "GBP",
+      "name": "British Pound",
+      "rate": 0.0285
+    },
+    {
+      "code": "JPY",
+      "name": "Japanese Yen",
+      "rate": 2.2494
+    },
+    {
+      "code": "AUD",
+      "name": "Australian Dollar",
+      "rate": 0.7345
+    },
+    {
+      "code": "CAD",
+      "name": "Canadian Dollar",
+      "rate": 0.7894
+    }
+  ]
+}
