@@ -1,12 +1,69 @@
 #include <iostream>
 #include <algorithm>
+#include <fstream>
+#include <vector>
+#include "nlohmann/json.hpp"
+using json = nlohmann::json;
 
 using namespace std;
 
-class MoneySimulator {
-  protected: double moneyAmount;
+struct Currency {
+    std::string code;
+    std::string name;
+    double rate;
+};
 
+class CurrencyConverter {
+  private: void parseJsonFile(const std::string & filename, std::vector < Currency > & currencies) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+      std::cerr << "Error opening file: " << filename << std::endl;
+      return;
+    }
+
+    json jsonData;
+    file >> jsonData;
+
+    const auto & currenciesArray = jsonData["currencies"];
+    for (const auto & currencyJson: currenciesArray) {
+      Currency currency;
+      currency.code = currencyJson["code"];
+      currency.name = currencyJson["name"];
+      currency.rate = currencyJson["rate"];
+      currencies.push_back(currency);
+    }
+  }
+  double convertCurrency(double amount,
+    const Currency & fromCurrency,
+      const Currency & toCurrency) {
+
+    return amount * (toCurrency.rate / fromCurrency.rate);
+  }
+
+
+  public:
+  void convert() {
+    std::vector < Currency > currencies;
+    parseJsonFile("currencies.json", currencies);
+
+    Currency fromCurrency, toCurrency;
+
+    fromCurrency = currencies[0]; // Assuming the first currency is PHP
+    toCurrency = currencies[1]; // Assuming the second currency is USD
+
+    double amountToConvert = 100.0;
+    double convertedAmount = convertCurrency(amountToConvert, fromCurrency, toCurrency);
+
+    std::cout << amountToConvert << " " << fromCurrency.code << " is equivalent to " <<
+      convertedAmount << " " << toCurrency.code << std::endl;
+  }
+
+};
+
+class MoneySimulator {
   private:
+  double moneyAmount;
+  CurrencyConverter currencyConverter;
     bool stringExistsInArray(const std::string & str,
       const std::string arr[], size_t size) {
       return std::find(arr, arr + size, str) != arr + size;
@@ -33,7 +90,7 @@ class MoneySimulator {
    cout << "YOUR MONEY: " << getMoney() << "\n\n";
     string activities[] = {
       "Gamble",
-      "Go to bank"
+      "Visit money converter"
     };
 
     int numberOfActivities = sizeof(activities) / sizeof(activities[0]);
@@ -57,6 +114,9 @@ class MoneySimulator {
     case 0:
       gamble();
       break;
+    case 1:
+       moneyConverter();
+       break;
     }
   }
 
@@ -139,6 +199,14 @@ class MoneySimulator {
     }
   }
 
+  void moneyConverter() {
+    clearTerminal();
+     cout << "----------------------------- MONEY CONVERTER ------------------------------------\n";
+    string currenciesCodes[] = {"PHP","USD", "EUR", "GBP", "JPY", "AUD", "CAD"};
+    cout << "converted" ;
+    
+  }
+  
   void start() {
     cout << "Game is starting..." << endl;
     homeScreen();
@@ -166,6 +234,8 @@ int main() {
   MoneySimulator app(100);
 
   app.clearTerminal();
+  CurrencyConverter converter;
+  //converter.convert();
   app.start();
 
   return 0;
