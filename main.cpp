@@ -176,7 +176,7 @@ public:
 
     string colors[] = { "blue", "green", "red", "yellow" };
 
-    int howManyColors = sizeof (colors) / sizeof (colors[0]);
+    int howManyColors = 4;
 
     bool colorChosenIsValid = true;
     string chosenColor;
@@ -200,7 +200,7 @@ public:
 
         cin >> chosenColor;
         colorChosenIsValid
-            = stringExistsInArray(chosenColor, colors, howManyColors);
+            = stringExistsInArray(chosenColor, colors, 4);
       }
     while (!colorChosenIsValid);
 
@@ -288,7 +288,13 @@ public:
   void
   start ()
   {
-    cout << "Game is starting..." << endl;
+    cout << "----------------WELCOME TO MONEY SIMULATOR...-------------\nPress ANY KEY to continue\n";
+    string key;
+    cin >> key;
+    cout << "\nThis is an unfinished project (for a practical exam) which I no longer have any plans for continuing...\nPress ANY KEY to continue\n";
+    cin >> key;
+    cout << "\nPress any key to start\n";
+    cin >> key;
     homeScreen ();
   }
 
