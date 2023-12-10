@@ -47,8 +47,8 @@ class CurrencyConverter {
 
     Currency fromCurrency, toCurrency;
 
-    fromCurrency = currencies[fromCurrencyOrder];  // Assuming the first currency is PHP
-    toCurrency = currencies[toCurrencyOrder];      // Assuming the second currency is USD
+    fromCurrency = currencies[fromCurrencyOrder];
+    toCurrency = currencies[toCurrencyOrder];
 
     double convertedAmount = convertCurrency(amountToConvert, fromCurrency, toCurrency);
 
