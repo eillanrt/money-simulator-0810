@@ -76,7 +76,7 @@ int main()
         double convertedAmount = convertCurrency(amountToConvert, fromCurrencyCode, toCurrencyCode);
         cout << "\n" << amountToConvert << fromCurrencyCode << " is equivalent to " << convertedAmount << toCurrencyCode << "\n\n";
 
-        cout << "convert another currency? 1=YES 0=EXIT\n=>";
+        cout << "convert another currency? 1=YES 0=EXIT\n=> ";
         cin >> convert_again;
     } while (convert_again);
     cout << "Programming exitingg...\n\n";
