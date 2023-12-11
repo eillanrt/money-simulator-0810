@@ -13,12 +13,12 @@ double convertCurrency(double amount, string fromCurrencyCode, string toCurrency
 {
     vector<Currency> currencies = { 
       { "PHP", "Philippine Peso", 1.0 }, 
-      { "USD", "US Dollar", 0.0199 }, 
-      { "EUR", "Euro", 0.0235 }, 
-      { "GBP", "British Pound", 0.0285 },
+      { "USD", "US Dollar", 0.018 }, 
+      { "EUR", "Euro", 0.017 }, 
+      { "GBP", "British Pound", 0.014 },
       { "JPY", "Japanese Yen", 2.2494 }, 
-      { "AUD", "Australian Dollar", 0.7345 }, 
-      { "CAD", "Canadian Dollar", 0.7894 } 
+      { "AUD", "Australian Dollar", 0.027 }, 
+      { "CAD", "Canadian Dollar", 0.024 } 
     };
 
     double fromCurrencyRate = 0, toCurrencyRate = 0;
