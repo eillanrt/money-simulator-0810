@@ -79,7 +79,7 @@ int main()
         cout << "convert another currency? 1=YES 0=EXIT\n=>";
         cin >> convert_again;
     } while (convert_again);
-
+    cout << "Programming exitingg...\n\n";
     exit(0);
 
     return 0;
