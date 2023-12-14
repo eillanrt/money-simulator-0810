@@ -60,11 +60,21 @@ int main()
 
         cout << "\nPICK YOUR CURRENCY => ";
         cin >> fromCurrencyIndex;
+        
+        if (fromCurrencyIndex > 7 || fromCurrencyIndex < 0) {
+            cout << "INVALID CURRENCY\n";
+            break;
+        }
 
         fromCurrencyCode = currenciesCodes[fromCurrencyIndex];
 
         cout << "CONVERT " << fromCurrencyCode << " TO => ";
         cin >> toCurrencyIndex;
+
+        if (toCurrencyIndex > 7 || toCurrencyIndex < 0) {
+            cout << "INVALID CURRENCY\n";
+            break;
+        }
 
         toCurrencyCode = currenciesCodes[toCurrencyIndex];
 
